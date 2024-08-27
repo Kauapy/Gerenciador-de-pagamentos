@@ -1,0 +1,30 @@
+from datetime import date
+print('{:=^30}'.format('LOJA'))
+compras=float(input('Preço das compras: R$'))
+print('FORMA DE PAGAMENTO')
+print('[1] à vista dinheiro/cheque')
+print('[2] à vista cartão')
+print('[3] 2x no cartão')
+print('[4] 3x ou mais no cartão')
+opçao=int(input('Qual é a opção?'))
+ano=date.today().year
+parcelar = compras/(ano * 12) 
+desconto = compras - (compras * 0.10)
+desconto_cartao= compras/2
+if(opçao == 1):
+    print(f'A vista no dinheiro fica com um desconto de {desconto}')
+elif(opçao == 2):
+    print(f'A vista no cartão fica com um desconto de {desconto_cartao}')
+elif(opçao == 3):
+    parcelas = 2
+    dividir= parcelas
+    if(dividir == 2):
+        print(f'Sua compra parcelada {dividir}x sem JUROS fica de R${desconto_cartao}')
+elif(opçao == 4):
+    juros = compras + (compras * 0.20)
+    totalparcela=int(input('Quantas parcelas?: '))
+    total = juros/ totalparcela
+    print(f'Sua compra parcelada em {totalparcela}x fica R${total:.2f} com JUROS')
+    print(f'Sua compra de R${compras} vai custar R${juros} no final.')
+else:
+    print('Escolha uma opção válida entre 1 e 4!')
